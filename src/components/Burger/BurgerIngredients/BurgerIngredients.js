@@ -32,7 +32,7 @@ class BurgerIngredient extends Component{
                 ingredient = <div className={classes.Salad}></div>;
                 break;
         }
-        return super.render();
+        return ingredient;
     }
 };
 // adding the prop-types package that allow me to inform the user of my code
