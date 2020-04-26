@@ -28,7 +28,22 @@ class BurgerBuilder extends Component {
             meat: 0
         },
         // a state to handle the final price of the burger
-        totalPrice: 0
+        totalPrice: 0,
+        // a state indicate to if we can make the purchase or not
+        // it depends on if we added ingredients or not
+        purchasable: false
+    }
+
+    // a function to update the purchase state of our burger
+    updatePurchaseState(ingredients) {
+        // convert the amounts of ingredients into one value represent the sum of them
+        const sum = Object.keys(ingredients).map(igKey => {
+            return ingredients[igKey]
+        }).reduce((sum, el) => {
+            return sum + el
+        }, 0);
+        // if the sum > 0 it will update the purchasable state to true
+        this.setState({purchasable: sum > 0})
     }
 
     // a function to add ingredients and increase the number of it in the state
@@ -46,6 +61,8 @@ class BurgerBuilder extends Component {
         const newPrice = oldPrice + priceAddition;
         //    Update the state in our class with the new information
         this.setState({ingredients: updatedIngredients, totalPrice: newPrice});
+        // call the updatePurchasableState to check whether the order button should be activated or not
+        this.updatePurchaseState(updatedIngredients);
     };
 
     // a function to remove ingredients and decrease the number of it in the state
@@ -68,6 +85,8 @@ class BurgerBuilder extends Component {
         const newPrice = oldPrice - priceDeduction;
         //    Update the state in our class with the new information
         this.setState({ingredients: updatedIngredients, totalPrice: newPrice});
+        // call the updatePurchasableState to check whether the order button should be activated or not
+        this.updatePurchaseState(updatedIngredients);
     };
 
     render() {
@@ -83,7 +102,6 @@ class BurgerBuilder extends Component {
         for (let key in disabledInfo) {
             disabledInfo[key] = disabledInfo[key] <= 0
         }
-        ;
         return (
             <Aux>
                 <Burger ingredients={this.state.ingredients}/>
@@ -91,7 +109,8 @@ class BurgerBuilder extends Component {
                     ingredientAdded={this.addIngredientHandler}
                     ingredientRemoved={this.removeIngredientHandler}
                     disabled={disabledInfo}
-                    price={this.state.totalPrice}/>
+                    price={this.state.totalPrice}
+                    purchasable={this.state.purchasable}/>
             </Aux>
         );
     }
