@@ -1,0 +1,28 @@
+/* the style of the button */
+.Button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    font: inherit;
+    padding: 10px;
+    margin: 10px;
+    font-weight: bold;
+}
+
+/* target only the first button of all buttons with the same name of class */
+.Button:first-of-type {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+/* Success class just make text color green */
+.Success {
+    color: #5C9210;
+}
+
+/* Danger class just make text color orange */
+.Danger {
+    color: #944317;
+}

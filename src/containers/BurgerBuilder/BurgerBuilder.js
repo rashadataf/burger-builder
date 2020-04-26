@@ -94,7 +94,7 @@ class BurgerBuilder extends Component {
     };
 
     // function that changes the purchasing state when the order button pressed
-    purchaseHandler =() => {
+    purchaseHandler = () => {
         this.setState({purchasing: true});
     }
 
@@ -102,6 +102,11 @@ class BurgerBuilder extends Component {
     // cancel the modal and the backdrop
     purchaseCancelHandler = () => {
         this.setState({purchasing: false})
+    }
+
+    // function to handle the operation of purchasing
+    purchaseContinueHandler = () => {
+        alert("You continue");
     }
 
     render() {
@@ -120,7 +125,9 @@ class BurgerBuilder extends Component {
         return (
             <Aux>
                 <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
-                    <OrderSummery ingredients={this.state.ingredients} />
+                    <OrderSummery purchaseCanceled={this.purchaseCancelHandler}
+                                  purchaseContinued={this.purchaseContinueHandler}
+                                  ingredients={this.state.ingredients}/>
                 </Modal>
                 <Burger ingredients={this.state.ingredients}/>
                 <BuildControls
