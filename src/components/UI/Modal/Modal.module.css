@@ -1,0 +1,36 @@
+/* The style of the modal */
+.Modal {
+    position: fixed;
+    z-index: 500;
+    background-color: white;
+    width: 70%;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px black;
+    padding: 20px;
+    left: 15%;
+    top: 30%;
+    transition: all 0.3s ease-out;
+}
+
+/* the h3 element in the modal */
+.Modal h3 {
+    margin-bottom: 16px;
+}
+
+/* the ul element in the modal */
+.Modal ul {
+    margin: 20px 56px;
+}
+
+/* the list items in the modal */
+.Modal ul li {
+    margin-top: 16px;
+}
+
+/* media query for big screens */
+@media (min-width: 600px) {
+    .Modal {
+        width: 500px;
+        left: calc(50% - 250px);
+    }
+}
