@@ -65,7 +65,7 @@ class BurgerBuilder extends Component {
         //    bring the price we will add to the total price
         const priceDeduction = INGREDIENT_PRICES[type];
         const oldPrice = this.state.totalPrice;
-        const newPrice = oldPrice + priceDeduction;
+        const newPrice = oldPrice - priceDeduction;
         //    Update the state in our class with the new information
         this.setState({ingredients: updatedIngredients, totalPrice: newPrice});
     };
@@ -81,15 +81,17 @@ class BurgerBuilder extends Component {
         // otherwise false
         // and we will pass this new object to the BuildControls Component which will pass it to the BuildControl Component
         for (let key in disabledInfo) {
-            disabledInfo[key] = disabledInfo[key] <=0
-        };
+            disabledInfo[key] = disabledInfo[key] <= 0
+        }
+        ;
         return (
             <Aux>
                 <Burger ingredients={this.state.ingredients}/>
                 <BuildControls
                     ingredientAdded={this.addIngredientHandler}
                     ingredientRemoved={this.removeIngredientHandler}
-                    disabled={disabledInfo}/>
+                    disabled={disabledInfo}
+                    price={this.state.totalPrice}/>
             </Aux>
         );
     }

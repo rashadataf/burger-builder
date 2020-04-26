@@ -9,3 +9,7 @@
     margin: auto;
     padding-bottom: 10px;
 }
+
+.BuildControls p {
+    margin-top: 3px;
+}
