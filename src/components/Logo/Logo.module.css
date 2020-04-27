@@ -1,0 +1,12 @@
+/* the Logo class */
+.Logo {
+    background-color: white;
+    padding: 8px;
+    height: 80%;
+    border-radius: 5px;
+}
+
+/* the image inside the Logo */
+.Logo img {
+    height: 100%;
+}
